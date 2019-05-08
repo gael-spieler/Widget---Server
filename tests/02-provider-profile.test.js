@@ -11,9 +11,9 @@ const server = require('../index')
 const db_provider = require('../models/provider')
 
 
-// Sing up provider
+// Set up provider's profile
 
-describe('signup', function() {
+describe('provider profile', function() {
 
     it("should update provider's personal information", function(done) {
 

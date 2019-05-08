@@ -11,9 +11,9 @@ const server = require('../index')
 const db_provider = require('../models/provider')
 
 
-// Sing up provider
+// Sign up provider
 
-describe('signup', function() {
+describe('provider signup', function() {
 
     it('should create a new provider', function(done) {
 

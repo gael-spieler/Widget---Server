@@ -34,4 +34,8 @@ describe('provider bookings', function() {
 
     })
 
+    it("should get all bookings of specific customer from booking list", function(done) {
+
+    })
+
 })
