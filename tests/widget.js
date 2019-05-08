@@ -14,6 +14,9 @@ describe('widget', function() {
 
     //service
 
+    it('should see all the provider services', function(done) {
+        
+    })
     it('should select a service', function(done) {
         
     })
@@ -47,6 +50,7 @@ describe('widget', function() {
 
 
     // login 
+    
     it('should not authenticate with wrong email', function(done) {
 
     })
