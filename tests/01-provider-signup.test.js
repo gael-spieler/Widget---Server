@@ -6,10 +6,10 @@ const chaiHttp = require('chai-http')
 chai.use(chaiHttp)
 
 const server = require('../index')
-const db_user = require('../models/user')
+const db_provider = require('../models/provider')
 
 // Sing up user
 
-describe('signup', function() {
+describe('provider signup', function() {
 
 })
