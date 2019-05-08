@@ -1,3 +1,5 @@
+import {describe} from "mocha";
+
 process.env.NODE_ENV = 'test'
 
 const chai = require('chai')
@@ -8,8 +10,17 @@ chai.use(chaiHttp)
 const server = require('../index')
 const db_provider = require('../models/provider')
 
-// Sing up user
 
-describe('provider signup', function() {
+// Sing up provider
+
+describe('signup', function() {
+
+    it('should create a new provider', function(done) {
+
+    })
+
+    it('should not create a provider with the same email', function(done) {
+
+    })
 
 })
