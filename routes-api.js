@@ -7,6 +7,9 @@ module.exports = function(app){
 	// Customer
 
 	app.post('/api/customers', require('./controllers/customer_create'))
+	app.post('/api/bookings', require('./controllers/booking_create'))
+	app.get('/api/bookings', require('./controllers/booking_create'))
+
 
 
 	// // Auth

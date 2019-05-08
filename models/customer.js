@@ -76,7 +76,11 @@ const db_customer = db.model('customer', {
 	cvc: {
 		type: Number
 	},
-	bookings: [booking]
+	booking: {
+		type:[booking]
+	}
+	
+	
 })
 
 // Export
