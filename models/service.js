@@ -44,7 +44,7 @@ const service_schema = new schema({
     price: {
         type: Number,
         required: true
-    }
+    },
 },
     options);
 
