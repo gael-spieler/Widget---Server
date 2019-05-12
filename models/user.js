@@ -47,10 +47,10 @@ const user_schema = new schema({
 			return this.google == null
 		},
 		validate: [{
-			validator: function(email){
-				const expression = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/i;
-				return expression.test(String(email).toLowerCase())},
-			message: 'Invalid email address'
+			validator: function(password){
+				const expression = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/i;
+				return expression.test(String(password))},
+			message: 'Password must be different'
 		}]
 	},
 	status: {
@@ -64,12 +64,12 @@ const user_schema = new schema({
 	},
 	stripe_token: {
 		type: String,
-		required: true,
+		// required: true,
 		default: "abcd1234!@£$"
 	},
 	agreed_to_terms: {
 		type: Boolean,
-		required: true,
+		// required: true,
 		validate: [{
 			validator: function(agreement_to_terms){
 				return agreement_to_terms === true;
