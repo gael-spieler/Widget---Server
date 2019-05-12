@@ -46,48 +46,4 @@ module.exports = function(app){
 	app.post('/api/reservations', require('./controllers/reservation_create'));				// Create reserved time period
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	app.get('/api/channels', require('./controllers/channels_read'))
-	app.get('/api/channels/:id', require('./controllers/channel_read'))
-	app.post('/api/channels', require('./controllers/channel_create'))
-	app.patch('/api/channels/:id', require('./controllers/channel_update'))
-	app.delete('/api/channels/:id', require('./controllers/channel_delete'))
-
-	// Messages
-
-	app.get('/api/messages', require('./controllers/messages_read'))
-	app.post('/api/messages', require('./controllers/message_create'))
-	app.patch('/api/messages/:id', require('./controllers/message_update'))
-	app.delete('/api/messages/:id', require('./controllers/message_delete'))
-
-
-
 };
