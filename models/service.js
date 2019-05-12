@@ -8,10 +8,21 @@ const mongoose = require('mongoose');
 let schema = mongoose.Schema;
 let ObjectId = schema.Types.ObjectId;
 
+const options = {};
+
+options.timestamps =
+    {createdAt: 'created_at'},
+    {updatedAt: 'updated_at'};
+
 const service_schema = new schema({
     __v: {
         type: Number,
         select: false
+    },
+    archived: {
+        type: Boolean,
+        request: true,
+        default: false
     },
     provider: {
         type: ObjectId,
@@ -34,7 +45,8 @@ const service_schema = new schema({
         type: Number,
         required: true
     }
-});
+},
+    options);
 
 // Virtuals
 service_schema.virtual('full_length').get(function () {

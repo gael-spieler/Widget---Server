@@ -54,9 +54,9 @@ module.exports = function(app){
 
 
 	// Services
-
-	app.post('/api/services', require('./controllers/service_create'))
-
+	// Create new service
+	app.post('/api/services', require('./controllers/service_create'));
+	app.get('/api/services/:id', require('./controllers/services_read'));
 
 
 
