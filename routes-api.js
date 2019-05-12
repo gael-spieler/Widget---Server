@@ -42,6 +42,9 @@ module.exports = function(app){
 	app.get('/api/services/:id', require('./controllers/services_read'));					// Get all services of provider
 	app.patch('/api/archive/services/:id', require('./controllers/service_archive'));		// Toggle archive property of service
 
+	// Reservations
+	app.post('/api/reservations', require('./controllers/reservation_create'));				// Create reserved time period
+
 
 
 
