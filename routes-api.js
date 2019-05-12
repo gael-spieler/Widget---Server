@@ -40,7 +40,7 @@ module.exports = function(app){
 	// Services
 	app.post('/api/services', require('./controllers/service_create'));						// Create new service
 	app.get('/api/services/:id', require('./controllers/services_read'));					// Get all services of provider
-	app.patch('/api/archive/services/:id', require('./controllers/service_archive'));		// Archive service
+	app.patch('/api/archive/services/:id', require('./controllers/service_archive'));		// Toggle archive property of service
 
 
 

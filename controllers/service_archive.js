@@ -2,11 +2,13 @@
 const db_service = require('../models/service')
 
 module.exports = function(req, res, next) {
-    db_service.findByIdAndUpdate(req.params.id,
-        req.body,
-        {
-            new: true
-        }).then(function(archived_service) {
-        res.status(200).json(archived_service)
+
+    db_service.findById(req.params.id, function(err, service){
+        service.archived = !service.archived;
+        service.save(function(err, updated_service){
+            res.status(200).json(updated_service)
+        })
     })
-}
+};
+
+
