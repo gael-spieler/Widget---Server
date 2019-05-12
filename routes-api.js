@@ -35,7 +35,10 @@ module.exports = function(app){
 
 	// Users
 
-	// Read all users and delete
+	// Create user
+	// app.post('/api/users', require('./controllers/user_create'));
+
+	// Get users and delete users
 	app.get('/api/users', require('./controllers/users_read'));
 	app.get('/api/users/:id', require('./controllers/user_read'));
 	app.delete('/api/users/:id', require('./controllers/user_delete'));
@@ -46,7 +49,7 @@ module.exports = function(app){
 	// Update provider
 	app.patch('/api/users/provider/:id', require('./controllers/provider_update'));
 
-	// app.post('/api/users', require('./controllers/user_create'));
+
 
 
 
