@@ -8,14 +8,12 @@ const mongoose = require('mongoose');
 const db_user = require('./user');
 
 let schema = mongoose.Schema;
-let ObjectId = schema.Types.ObjectId;
-
 
 const options = {discriminatorKey: 'user_type'};
 
 
-// defining the child schema's discriminatorKey
-const provider_schema = db_user.discriminator('provider', new schema({
+// defining the child schema's discriminatorKey snd the schema itself
+db_user.discriminator('provider', new schema({
     company: {
         type: String,
         required: true
@@ -59,16 +57,6 @@ const provider_schema = db_user.discriminator('provider', new schema({
         required: true,
         default: '17:00'
     }
-    // days_off: {
-    //     type: {
-    //         day: String,
-    //     },
-    //     // enum: ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'],
-    //     // default: [{day: "saturday"}, {day: 'sunday'}]
-    //     default: {
-    //         day: 'sunday'
-    //     }
-    // }
     },
     options)
 );

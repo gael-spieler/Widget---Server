@@ -9,12 +9,19 @@ let ObjectId = schema.Types.ObjectId;
 
 // set the discriminatorKey that will be used to differentiate between the users
 const options = {discriminatorKey: 'user_type'};
+options.timestamps =
+	{createdAt: 'created_at'},
+	{updatedAt: 'updated_at'};
+
 
 // base user schema
 const user_schema = new schema({
 	__v: {
 		type: Number,
 		select: false
+	},
+	last_logged_in: {
+		type: Date
 	},
 	first_name: {
 		type: String,
@@ -50,11 +57,6 @@ const user_schema = new schema({
 		type: String,
 		default: 'Online'
 	},
-	created: {
-		type: Date,
-		required: true,
-		default: Date.now
-	},
 	google: {
 		id: {
 			type: String
@@ -78,6 +80,10 @@ const user_schema = new schema({
 	}},
 	options);
 
+// Virtuals
+user_schema.virtual('full_name').get(function () {
+	return this.first_name + ' ' + this.last_name;
+});
 
 const db_user = db.model('user', user_schema);
 

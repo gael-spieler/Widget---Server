@@ -33,15 +33,29 @@ module.exports = function(app){
 	}));
 
 
-	// Channels
-
 	// Users
 
+	// Read all users and delete
 	app.get('/api/users', require('./controllers/users_read'));
 	app.get('/api/users/:id', require('./controllers/user_read'));
-	app.patch('/api/users/:id', require('./controllers/user_update'));
 	app.delete('/api/users/:id', require('./controllers/user_delete'));
+
+	// Update user (users of base schema)
+	app.patch('/api/users/:id', require('./controllers/user_update'));
+
+	// Update provider
+	app.patch('/api/users/provider/:id', require('./controllers/provider_update'));
+
 	// app.post('/api/users', require('./controllers/user_create'));
+
+
+
+	// Services
+
+	app.post('/api/services', require('./controllers/service_create'))
+
+
+
 
 
 
@@ -60,4 +74,4 @@ module.exports = function(app){
 
 
 
-}
+};
