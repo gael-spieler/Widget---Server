@@ -42,49 +42,4 @@ module.exports = function(app){
 	app.get('/api/services/:id', require('./controllers/services_read'));					// Get all services of provider
 	app.patch('/api/archive/services/:id', require('./controllers/service_archive'));		// Toggle archive property of service
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	app.get('/api/channels', require('./controllers/channels_read'))
-	app.get('/api/channels/:id', require('./controllers/channel_read'))
-	app.post('/api/channels', require('./controllers/channel_create'))
-	app.patch('/api/channels/:id', require('./controllers/channel_update'))
-	app.delete('/api/channels/:id', require('./controllers/channel_delete'))
-
-	// Messages
-
-	app.get('/api/messages', require('./controllers/messages_read'))
-	app.post('/api/messages', require('./controllers/message_create'))
-	app.patch('/api/messages/:id', require('./controllers/message_update'))
-	app.delete('/api/messages/:id', require('./controllers/message_delete'))
-
-
-
 };
