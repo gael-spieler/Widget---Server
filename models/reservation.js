@@ -13,11 +13,15 @@ options.timestamps =
     {updatedAt: 'updated_at'};
 
 
-// base user schema
+// base reservation schema
 const reservation_schema = new schema({
     __v: {
         type: Number,
         select: false,
+    },
+    provider: {
+        type: ObjectId,
+        required: true,
     },
     start: {
         type: Date,
@@ -40,6 +44,6 @@ const db_reservation = db.model('reservation', reservation_schema);
 
 
 // Export
-module.exports = db_user;
+module.exports = db_reservation;
 
 
