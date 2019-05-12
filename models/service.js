@@ -24,6 +24,11 @@ const service_schema = new schema({
         request: true,
         default: false
     },
+    booked: {
+        type: Boolean,
+        request: true,
+        default: false
+    },
     provider: {
         type: ObjectId,
         ref: 'provider',
