@@ -38,9 +38,9 @@ module.exports = function(app){
 
 
 	// Services
-	app.post('/api/services/:provider_id', require('./controllers/service_create'));						// Create new service
+	app.post('/api/services/:provider_id', require('./controllers/service_create'));		// Create new service
 	app.get('/api/services/:provider_id', require('./controllers/services_read'));			// Get services of provider (all/archived/active)
-	app.patch('/api/services/', require('./controllers/service_archive'));					// Toggle archive property of service
+	app.patch('/api/services/:id', require('./controllers/service_archive'));				// Toggle archive property of service
 
 	// Reservations
 	app.post('/api/reservations/', require('./controllers/reservation_create'));				// Create reserved time period
