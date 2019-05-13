@@ -26,6 +26,11 @@ db_reservation.discriminator('appointment', new schema({
         ref: 'user',
         required: true
     },
+    booked_at: {
+        type: Date,
+        requested: true,
+        default: Date.now()
+    },
     approved: {
         type: Boolean,
         required: true,
