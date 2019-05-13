@@ -5,7 +5,6 @@ const db = require('../db');
 const mongoose = require('mongoose');
 
 let schema = mongoose.Schema;
-let ObjectId = schema.Types.ObjectId;
 
 // set the discriminatorKey that will be used to differentiate between the users
 const options = {discriminatorKey: 'user_type'};
@@ -64,19 +63,18 @@ const user_schema = new schema({
 	},
 	stripe_token: {
 		type: String,
-		// required: true,
+		required: true,
 		default: "abcd1234!@£$"
 	},
 	agreed_to_terms: {
 		type: Boolean,
-		// required: true,
+		required: true,
 		validate: [{
 			validator: function(agreement_to_terms){
 				return agreement_to_terms === true;
 			},
-			message: 'Please agree to the terms and conditions.'
+			message: 'You have to agree to the terms and conditions.'
 		}],
-		// default: true
 	}},
 	options);
 

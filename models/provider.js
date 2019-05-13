@@ -14,6 +14,11 @@ const options = {discriminatorKey: 'user_type'};
 
 // defining the child schema's discriminatorKey snd the schema itself
 db_user.discriminator('provider', new schema({
+    subscription: {
+        type: String,
+        enum: ['free', 'standard', 'premium'],
+        default: 'free'
+    },
     company: {
         type: String,
         required: true
