@@ -1,5 +1,6 @@
 const db_provider = require('../models/provider');
 const bcrypt = require('bcrypt');
+const sgMail = require('@sendgrid/mail');
 
 module.exports = function(req, res, next) {
 
@@ -23,6 +24,15 @@ module.exports = function(req, res, next) {
         }
         // if email does not exist, create the provider
         db_provider.create(req.body).then(function(provider) {
+            sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+            const msg = {
+                to: provider.email,
+                from: process.env.EMAIL_ADDRESS,
+                subject: 'Welcome to Platboo',
+                // text: 'and easy to do anywhere, even with Node.js',
+                html: '<strong>Dear ' + provider.first_name + ' </b> thank you for signing up with Platboo! Your business has just become bookable!</strong>',
+            };
+            sgMail.send(msg);
             res.status(200).json(provider);
             // res.redirect('/')
         }).catch(next)
