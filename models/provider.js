@@ -56,6 +56,12 @@ db_user.discriminator('provider', new schema({
         type: String,
         required: true,
         default: '17:00'
+    },
+    booking_type: {
+        type: String,
+        enum: ['request', 'instance'],
+        required: true,
+        default: 'instance'
     }
     },
     options)

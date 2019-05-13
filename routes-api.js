@@ -33,7 +33,7 @@ module.exports = function(app){
 	app.delete('/api/users/:id', require('./controllers/user_delete'));						// Delete user
 	app.patch('/api/users/:id', require('./controllers/user_update'));						// Update user - base schema
 	app.patch('/api/users/provider/:id', require('./controllers/provider_update'));			// Update provider
-	// app.post('/api/users', require('./controllers/user_create'));						// Create user
+	// app.post('/api/users', require('./controllers/user_create'));							// Create user
 	// app.get('/api/users', require('./controllers/users_read'));								// Get all users
 
 
@@ -43,7 +43,5 @@ module.exports = function(app){
 	app.patch('/api/archive/services/:id', require('./controllers/service_archive'));		// Toggle archive property of service
 
 	// Reservations
-	app.post('/api/reservations', require('./controllers/reservation_create'));				// Create reserved time period
-
-
+	app.post('/api/reservations/', require('./controllers/reservation_create'));				// Create reserved time period
 };

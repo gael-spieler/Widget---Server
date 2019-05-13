@@ -5,6 +5,7 @@ const db = require('../db');
 const mongoose = require('mongoose');
 
 let schema = mongoose.Schema;
+let ObjectId = schema.Types.ObjectId;
 
 // set the discriminatorKey that will be used to differentiate between the reservations
 const options = {discriminatorKey: 'reservation_type'};
@@ -21,6 +22,7 @@ const reservation_schema = new schema({
     },
     provider: {
         type: ObjectId,
+        ref: 'provider',
         required: true,
     },
     start: {
