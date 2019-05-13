@@ -20,6 +20,9 @@ const reservation_schema = new schema({
         type: Number,
         select: false,
     },
+    name: {
+        type: String
+    },
     provider: {
         type: ObjectId,
         ref: 'provider',
