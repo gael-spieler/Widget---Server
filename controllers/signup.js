@@ -9,6 +9,8 @@ module.exports = function(req, res, next) {
 	if (req.body.email) {
 		req.body.email = req.body.email.toLowerCase()
 	}
+
+
 	req.body.password = bcrypt.hashSync(req.body.password, 10);
 
 	// if email is taken, reject, otherwise create the user
@@ -30,8 +32,6 @@ module.exports = function(req, res, next) {
 		}).catch(next)
 	}).catch(next)
 
-	// save to database
 
-	// res
 
-}
+};

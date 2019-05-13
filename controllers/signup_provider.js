@@ -27,9 +27,4 @@ module.exports = function(req, res, next) {
             // res.redirect('/')
         }).catch(next)
     }).catch(next)
-
-    // save to database
-
-    // res
-
-}
+};

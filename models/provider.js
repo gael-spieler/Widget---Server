@@ -14,11 +14,6 @@ const options = {discriminatorKey: 'user_type'};
 
 // defining the child schema's discriminatorKey snd the schema itself
 db_user.discriminator('provider', new schema({
-    subscription: {
-        type: String,
-        enum: ['free', 'standard', 'premium'],
-        default: 'free'
-    },
     company: {
         type: String,
         required: true
@@ -67,6 +62,22 @@ db_user.discriminator('provider', new schema({
         enum: ['request', 'instance'],
         required: true,
         default: 'instance'
+    },
+    subscription: {
+        type: String,
+        enum: ['free', 'standard', 'premium'],
+        default: 'free'
+    },
+    payment_option: {
+        type: String,
+        enum: ['monthly', 'yearly'],
+        required: true,
+        default: 'monthly'
+    },
+    widget_script: {
+        type: String,
+        required: true,
+        default: '<script scr="http://platboo.com/jkfbeg8797039p2];lsjd0y4gkjanfkj"></script>'
     }
     },
     options)
