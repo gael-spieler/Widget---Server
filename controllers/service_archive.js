@@ -3,11 +3,9 @@ const db_service = require('../models/service');
 
 
 module.exports = function(req, res, next) {
-
+    // check if provider is authorized to get service, if yes: return service
     db_service.findById(req.params.id, function(err, service){
-        console.log(service.provider);
-        console.log(req.headers.user_id);
-        if (service.provider != req.headers.user_id){
+        if (service.provider != req.user.id){
             return next({
                 message: "Service doesn't exist."
             })

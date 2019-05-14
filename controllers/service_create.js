@@ -7,7 +7,7 @@ module.exports = function(req, res, next) {
         duration : req.body.duration,
         price : req.body.price,
         preparation_time : req.body.preparation_time,
-        provider: req.headers.user_id
+        provider: req.user
     }).then(function(service) {
         // make sure service is unique
         if (service) {
@@ -17,7 +17,7 @@ module.exports = function(req, res, next) {
         }
         // if service does not exist, create the service
         const new_service = req.body;
-        new_service.provider = req.headers.user_id;
+        new_service.provider = req.user;
         db_service.create(req.body).then(function(service) {
 
             res.status(200).json(service)
