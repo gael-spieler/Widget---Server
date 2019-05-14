@@ -24,7 +24,7 @@ const service_schema = new schema({
         request: true,
         default: false
     },
-    booked: {
+    was_booked: {
         type: Boolean,
         request: true,
         default: false
