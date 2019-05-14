@@ -32,6 +32,7 @@ module.exports = function(req, res, next) {
 				// text: 'and easy to do anywhere, even with Node.js',
 				html: '<strong>Dear ' + user.first_name + '<br/> thank you for signing up with Platboo! Happy booking!</strong>',
 			};
+			sgMail.send(msg);
 			res.status(200).json(user)
 			// res.redirect('/')
 

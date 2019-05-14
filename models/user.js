@@ -61,10 +61,9 @@ const user_schema = new schema({
 			type: String
 		}
 	},
-	stripe_token: {
+	stripe_customer: {
 		type: String,
-		required: true,
-		default: "abcd1234!@£$"
+		required: true
 	},
 	agreed_to_terms: {
 		type: Boolean,
