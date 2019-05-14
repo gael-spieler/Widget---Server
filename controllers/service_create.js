@@ -1,11 +1,4 @@
-const passport = require('passport');
 const db_service = require('../models/service');
-
-
-// Import mongoose from node_modules
-const mongoose = require('mongoose');
-let schema = mongoose.Schema;
-let ObjectId = schema.Types.ObjectId;
 
 module.exports = function(req, res, next) {
 
@@ -14,7 +7,7 @@ module.exports = function(req, res, next) {
         duration : req.body.duration,
         price : req.body.price,
         preparation_time : req.body.preparation_time,
-        provider: req.params.provider_id
+        provider: req.headers.user_id
     }).then(function(service) {
         // make sure service is unique
         if (service) {
@@ -24,7 +17,7 @@ module.exports = function(req, res, next) {
         }
         // if service does not exist, create the service
         const new_service = req.body;
-        new_service.provider = req.params.provider_id;
+        new_service.provider = req.headers.user_id;
         db_service.create(req.body).then(function(service) {
 
             res.status(200).json(service)
@@ -32,6 +25,4 @@ module.exports = function(req, res, next) {
 
         }).catch(next)
     }).catch(next)
-
-
 };
