@@ -29,19 +29,18 @@ module.exports = function(app){
 
 
 	// Users
-	app.get('/api/users/:id', require('./controllers/user_read'));							// Get user by ID
-	app.delete('/api/users/:id', require('./controllers/user_delete'));						// Delete user
-	app.patch('/api/users/:id', require('./controllers/user_update'));						// Update user - base schema
-	app.patch('/api/users/provider/:id', require('./controllers/provider_update'));			// Update provider
-	// app.post('/api/users', require('./controllers/user_create'));							// Create user
-	// app.get('/api/users', require('./controllers/users_read'));								// Get all users
+	app.get('/api/users/:id', require('./controllers/user_read'));									// Get user by ID
+	app.delete('/api/users/:id', require('./controllers/user_delete'));								// Delete user
+	app.patch('/api/users/:id', require('./controllers/user_update'));								// Update user - base schema
+	app.patch('/api/users/provider/:id', require('./controllers/user_provider_update'));			// Update provider
+	// app.get('/api/users', require('./controllers/users_read'));										// Get all users
 
 
 	// Services
-	app.post('/api/services/', require('./controllers/service_create'));					// Create new service
-	app.get('/api/services/', require('./controllers/services_read'));						// Get services of provider (all/archived/active)
-	app.patch('/api/services/:id', require('./controllers/service_archive'));				// Toggle archive property of service
+	app.post('/api/services/', require('./controllers/service_create'));							// Create new service
+	app.get('/api/services/', require('./controllers/services_read'));								// Get services of provider (all/archived/active)
+	app.patch('/api/services/:id', require('./controllers/service_archive'));						// Toggle archive property of service
 
-	// Reservations
-	app.post('/api/reservations/', require('./controllers/reservation_create'));				// Create reserved time period
+	// Bookings
+	app.post('/api/bookings/', require('./controllers/booking_create'));							// Create appointment
 };

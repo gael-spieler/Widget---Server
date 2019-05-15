@@ -4,9 +4,6 @@ const db = require('../db');
 // Import mongoose from node_modules
 const mongoose = require('mongoose');
 
-// Import user model (the model of the base schema that provider schema extends
-const db_reservation = require('./user');
-
 let schema = mongoose.Schema;
 let ObjectId = schema.Types.ObjectId;
 
@@ -15,7 +12,6 @@ options.timestamps =
     {createdAt: 'created_at'},
     {updatedAt: 'updated_at'};
 
-// defining the child schema's discriminatorKey and the schema itself
 const booking_schema = new schema({
     __v: {
         type: Number,

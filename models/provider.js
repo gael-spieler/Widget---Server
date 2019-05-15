@@ -85,6 +85,9 @@ db_user.discriminator('provider', new schema({
 
 const db_provider = db.model('provider');
 
+
+
+
 // Export
 module.exports = db_provider;
 
