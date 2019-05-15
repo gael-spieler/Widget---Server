@@ -1,6 +1,3 @@
-// TODO
-//
-
 // Import db.js
 const db = require('../db');
 
@@ -11,14 +8,30 @@ const mongoose = require('mongoose');
 const db_reservation = require('./user');
 
 let schema = mongoose.Schema;
+let ObjectId = schema.Types.ObjectId;
 
-const options = {discriminatorKey: 'reservation_type'};
-
+const options = {};
+options.timestamps =
+    {createdAt: 'created_at'},
+    {updatedAt: 'updated_at'};
 
 // defining the child schema's discriminatorKey and the schema itself
-db_reservation.discriminator('appointment', new schema({
+const booking_schema = new schema({
+    __v: {
+        type: Number,
+        select: false
+    },
+    start: {
+        type: Date,
+        required: true
+    },
+    end: {
+        type: Date,
+        required: true
+    },
     service: {
         type: ObjectId,
+        ref: 'service',
         required: true,
     },
     customer: {
@@ -26,15 +39,15 @@ db_reservation.discriminator('appointment', new schema({
         ref: 'user',
         required: true
     },
+    provider: {
+        type: ObjectId,
+        ref: 'provider',
+        required: true
+    },
     booked_at: {
         type: Date,
         requested: true,
         default: Date.now()
-    },
-    approved: {
-        type: Boolean,
-        required: true,
-        default: true
     },
     approved_at: {
         type: Date,
@@ -48,7 +61,7 @@ db_reservation.discriminator('appointment', new schema({
     },
     archived: {
         type: Boolean,
-        required: true,
+        requested: true,
         default: false
     },
     took_place_feedback_by_provider: {   // Provider has to send a feedback that the appointment actually took place
@@ -56,15 +69,13 @@ db_reservation.discriminator('appointment', new schema({
     },
     took_place_feedback_by_customer: { // Customer has to send a feedback that the appointment actually took place
         type: Date
-    }
     },
-    options)
-);
+    },
+    options);
 
-const db_appointment = db.model('appointment');
-
+const db_booking = new db.model('booking', booking_schema);
 
 
 // Export
-module.exports = db_appointment;
+module.exports = db_booking;
 

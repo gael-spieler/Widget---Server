@@ -16,11 +16,10 @@ module.exports = function(req, res, next) {
             })
         }
         // if service does not exist, create the service
-        const new_service = req.body;
-        new_service.provider = req.user;
-        db_service.create(req.body).then(function(service) {
-
-            res.status(200).json(service)
+        const service_to_add = req.body;
+        service_to_add.provider = req.user;
+        db_service.create(service_to_add).then(function(new_service) {
+            res.status(200).json(new_service)
             // res.redirect('/')
 
         }).catch(next)
