@@ -1,7 +1,8 @@
 // Import user
-const db_provider = require('../models/provider')
-const db_user = require('../models/user')
+const db_provider = require('../models/provider');
+const db_user = require('../models/user');
 
+// Update provider information
 module.exports = function(req, res, next) {
 
     // transform email to lowercase

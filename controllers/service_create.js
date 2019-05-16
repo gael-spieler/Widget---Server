@@ -1,7 +1,7 @@
 const db_service = require('../models/service');
 
 module.exports = function(req, res, next) {
-
+    // Checks for service parameters to prevent creating duplicates.
     db_service.findOne({
         name : req.body.name,
         duration : req.body.duration,
@@ -20,7 +20,6 @@ module.exports = function(req, res, next) {
         service_to_add.provider = req.user;
         db_service.create(service_to_add).then(function(new_service) {
             res.status(200).json(new_service)
-            // res.redirect('/')
 
         }).catch(next)
     }).catch(next)
