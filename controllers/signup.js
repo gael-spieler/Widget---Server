@@ -29,7 +29,7 @@ module.exports = function(req, res, next) {
 				to: user.email,
 				from: process.env.EMAIL_ADDRESS,
 				subject: 'Welcome to Platboo',
-				// text: 'and easy to do anywhere, even with Node.js',
+				// text: 'some text',
 				html: '<strong>Dear ' + user.first_name + '<br/> thank you for signing up with Platboo! Happy booking!</strong>',
 			};
 			sgMail.send(msg);

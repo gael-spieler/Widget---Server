@@ -13,7 +13,6 @@ module.exports = function(req, res, next) {
     db_user.findOne({
         email: req.body.email
     }).then(function (user) {
-        console.log('user', user);
         // make sure email is unique
         if (user) {
             console.log('err')
@@ -21,26 +20,13 @@ module.exports = function(req, res, next) {
                 message: 'Email address already exists.'
             })
         }
-        // if email is taken, reject, otherwise update user info
-        db_provider.findOne({
-            email: req.body.email
-        }).then(function (user) {
-            console.log('user', user);
-            // make sure email is unique
-            if (user) {
-                console.log('err')
-                return next({
-                    message: 'Email address already exists.'
-                })
-            }
 
-            db_provider.findByIdAndUpdate(req.params.id,
-                req.body,
-                {
-                    new: true
-                }).then(function (updated_provider) {
-                res.status(200).json(updated_provider)
-            }).catch(next)
+        db_provider.findByIdAndUpdate(req.user._id,
+            req.body,
+            {
+                new: true
+            }).then(function (updated_provider) {
+            res.status(200).json(updated_provider)
         }).catch(next)
     }).catch(next)
 }

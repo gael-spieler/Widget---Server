@@ -10,7 +10,7 @@ module.exports = function(app){
 	app.post('/api/login', require('./controllers/login'));									// Login - both user types
 	app.get('/api/logout', require('./controllers/logout'));								// Logout - both user types
 
-	// Google loginn
+	// Google login
 	app.get('/google/redirect', passport.authenticate('google'), function(req, res, next) {
 		if (req.user) {
 			res.redirect('/')
@@ -29,17 +29,19 @@ module.exports = function(app){
 
 
 	// Users
-	app.get('/api/users/:id', require('./controllers/user_read'));									// Get user by ID
-	app.delete('/api/users/:id', require('./controllers/user_delete'));								// Delete user
-	app.patch('/api/users/:id', require('./controllers/user_update'));								// Update user - base schema
-	app.patch('/api/users/provider/:id', require('./controllers/user_provider_update'));			// Update provider
-	// app.get('/api/users', require('./controllers/users_read'));										// Get all users
+	app.get('/api/provider/users/:id', require('./controllers/user_read'));							// Get user (customer) by ID
+	app.get('/api/widget/users/', require('./controllers/provider_for_widget_read'));	// Get provider by ID
+	app.delete('/api/users/', require('./controllers/user_delete'));								// Delete user
+	app.patch('/api/users/provider/', require('./controllers/user_provider_update'));				// Update provider
+
+
 
 
 	// Services
-	app.post('/api/services/', require('./controllers/service_create'));							// Create new service
-	app.get('/api/services/', require('./controllers/services_read'));								// Get services of provider (all/archived/active)
-	app.patch('/api/services/:id', require('./controllers/service_archive'));						// Toggle archive property of service
+	app.post('/api/provider/services/', require('./controllers/service_create'));							// Create new service
+	app.get('/api/provider/services/', require('./controllers/services_read'));								// Get services of provider (all/archived/active)
+	app.get('/api/widget/services/:provider_id', require('./controllers/services_for_widget_read'));								// Get services of provider (all/archived/active)
+	app.patch('/api/provider/services/:id', require('./controllers/service_archive'));						// Toggle archive property of service
 
 	// Bookings
 	app.post('/api/bookings/', require('./controllers/booking_create'));							// Create appointment
