@@ -1,4 +1,6 @@
 const db_booking = require('../models/booking');
+const db_user = require('../models/user');
+const sgMail = require('@sendgrid/mail');
 
 module.exports = function(req, res, next) {
     // db_booking.findOne({
@@ -41,7 +43,19 @@ module.exports = function(req, res, next) {
                 path: 'service',
                 select: ['name', 'length', 'price']
             }).then(function(saved_booking) {
-            res.status(201).json(saved_booking)
+
+                db_user.findById(req.user._id).then(function(user) {
+                    sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+                    const msg = {
+                        to: user.email,
+                        from: process.env.EMAIL_ADDRESS,
+                        subject: 'You booked an appointment!',
+                        // text: 'and easy to do anywhere, even with Node.js',
+                        html: '<strong>Dear ' + user.first_name + '<br/> thank you for booking with Platboo! Happy booking!</strong>',
+                    };
+                    sgMail.send(msg);
+                    res.status(201).json(saved_booking)
+                });
         })
     })
 };
