@@ -37,7 +37,7 @@ module.exports = function(req, res, next) {
             .findById(new_booking._id)
             .populate({
                 path: 'provider',
-                select: ['first_name', 'last_name', 'company', 'currency']
+                select: ['first_name', 'last_name', 'company', 'currency', 'cancellation_time']
             })
             .populate({
                 path: 'service',
@@ -49,9 +49,9 @@ module.exports = function(req, res, next) {
                     const msg = {
                         to: user.email,
                         from: process.env.EMAIL_ADDRESS,
-                        subject: 'You booked an appointment!',
+                        subject: 'You booked an appointment with ' + saved_booking.provider.company + '!',
                         // text: 'and easy to do anywhere, even with Node.js',
-                        html: '<strong>Dear ' + user.first_name + '<br/> thank you for booking with Platboo! Happy booking!</strong>',
+                        html: '<strong>Dear ' + user.first_name + '<br/> thank you for booking with Platboo!  Booking details: ' + saved_booking.service.name + ' on : ' + saved_booking.start + '. You can cancel your booking free of charge '+ saved_booking.provider.cancellation_time +' hours before your appointment by clicking on the following link: wwww.linklinklink.com/sometokenthingshere.  Happy booking!</strong>',
                     };
                     sgMail.send(msg);
                     res.status(201).json(saved_booking)
@@ -59,4 +59,3 @@ module.exports = function(req, res, next) {
         })
     })
 };
-
