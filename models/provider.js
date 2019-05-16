@@ -77,14 +77,13 @@ db_user.discriminator('provider', new schema({
     widget_script: {
         type: String,
         required: true,
-        default: '<script scr="http://platboo.com/jkfbeg8797039p2];lsjd0y4gkjanfkj"></script>'
+        default: '<script scr="http://platboo.com/APIKeytokrnthing"></script>'
     }
     },
     options)
 );
 
 const db_provider = db.model('provider');
-
 
 
 

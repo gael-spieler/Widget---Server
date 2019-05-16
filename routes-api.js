@@ -30,7 +30,7 @@ module.exports = function(app){
 
 	// Users
 	app.get('/api/provider/users/:id', require('./controllers/user_read'));							// Get user (customer) by ID
-	app.get('/api/widget/users/', require('./controllers/provider_for_widget_read'));	// Get provider by ID
+	app.get('/api/widget/users/', require('./controllers/provider_for_widget_read'));				// Get provider by ID
 	app.delete('/api/users/', require('./controllers/user_delete'));								// Delete user
 	app.patch('/api/users/provider/', require('./controllers/user_provider_update'));				// Update provider
 
@@ -40,8 +40,8 @@ module.exports = function(app){
 	// Services
 	app.post('/api/provider/services/', require('./controllers/service_create'));							// Create new service
 	app.get('/api/provider/services/', require('./controllers/services_read'));								// Get services of provider (all/archived/active)
-	app.get('/api/widget/services/:provider_id', require('./controllers/services_for_widget_read'));								// Get services of provider (all/archived/active)
-	app.patch('/api/provider/services/:id', require('./controllers/service_archive'));						// Toggle archive property of service
+	app.get('/api/widget/services/:provider_id', require('./controllers/services_for_widget_read'));		// Get services of provider (all/archived/active)
+	app.patch('/api/provider/services/:service_id', require('./controllers/service_archive'));						// Toggle archive property of service
 
 	// Bookings
 	app.post('/api/bookings/', require('./controllers/booking_create'));							// Create appointment
