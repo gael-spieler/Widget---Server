@@ -29,7 +29,7 @@ module.exports = function(app){
 
 
 	// Users
-	app.get('/api/provider/users/:customer_id', require('./controllers/user_read'));				// Get user (customer) by ID
+	app.get('/api/provider/users/:customer_id', require('./controllers/user_read'));				// Get customer by ID
 	app.get('/api/widget/users/', require('./controllers/provider_for_widget_read'));				// Get provider by ID
 	app.delete('/api/users/', require('./controllers/user_delete'));								// Delete user
 	app.patch('/api/users/provider/', require('./controllers/user_provider_update'));				// Update provider
