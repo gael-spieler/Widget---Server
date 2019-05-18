@@ -63,7 +63,8 @@ const user_schema = new schema({
 	},
 	stripe_customer: {
 		type: String,
-		required: true
+		required: true,
+		default: 'abcdefghijklmn'
 	},
 	agreed_to_terms: {
 		type: Boolean,

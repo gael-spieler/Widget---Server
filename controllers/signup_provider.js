@@ -34,7 +34,7 @@ module.exports = function(req, res, next) {
             };
             sgMail.send(msg);
             res.status(200).json(provider);
-            // res.redirect('/')
+            // res.redirect('/login.html')
         }).catch(next)
     }).catch(next)
 };
