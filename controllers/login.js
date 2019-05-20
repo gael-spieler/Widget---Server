@@ -17,8 +17,8 @@ module.exports = function(req, res, next) {
 			if (err) {
 				return next(err)
 			}
-			// return res.status(200).json(user)
-			res.redirect(process.env.PLATBOO_URL)
+			return res.status(200).json(user)
+			// res.redirect('/')
 
 		})
 	})(req, res, next)
