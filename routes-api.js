@@ -5,10 +5,10 @@ module.exports = function(app){
 	// ### API ###
 
 	// Auth
-	app.post('/api/signup', require('./controllers/signup'));								// Sign up - customer
+	app.post('/api/signup/', require('./controllers/signup'));								// Sign up - customer
 	app.post('/api/provider/signup/', require('./controllers/signup_provider'));			// Sign up - provider
-	app.post('/api/login', require('./controllers/login'));									// Login - both user types
-	app.get('/api/logout', require('./controllers/logout'));								// Logout - both user types
+	app.post('/api/login/', require('./controllers/login'));									// Login - both user types
+	app.get('/api/logout/', passport.authenticate('jwt', {session: false}), require('./controllers/logout'));								// Logout - both user types
 
 	// // Google login
 	// app.get('/google/redirect', passport.authenticate('google'), function(req, res, next) {
