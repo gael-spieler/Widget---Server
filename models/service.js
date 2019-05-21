@@ -23,7 +23,7 @@ const service_schema = new schema({
         request: true,
         default: false
     },
-    was_booked: {
+    wasBooked: {
         type: Boolean,
         request: true,
         default: false
@@ -41,7 +41,7 @@ const service_schema = new schema({
         type: Number,
         required: true
     },
-    preparation_time: {
+    preparationTime: {
         type: Number,
         required: true
     },
