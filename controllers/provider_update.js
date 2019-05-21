@@ -4,6 +4,7 @@ const db_user = require('../models/user');
 
 // Update provider information
 module.exports = function(req, res, next) {
+    console.log('req', req)
 
     // transform email to lowercase
     if (req.body.email) {
@@ -21,6 +22,7 @@ module.exports = function(req, res, next) {
                 message: 'Email address already exists.'
             })
         }
+
 
         db_provider.findByIdAndUpdate(req.user._id,
             req.body,

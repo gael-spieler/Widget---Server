@@ -35,10 +35,7 @@ app.use(session({
 // Auth
 require('./auth.js')(app);
 // Routes
-require('./routes-client.js')(app);
 require('./routes-api.js')(app);
-// Static
-app.use(express.static(__dirname + '/client')); // serves all files in the /client folder as static
 // Errors
 app.use(function(err, req, res, next) {
 	console.log('err', err);

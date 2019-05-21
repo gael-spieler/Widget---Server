@@ -7,7 +7,6 @@ module.exports = function(req, res, next) {
         .then(function(updated_service) {
         res.status(200).json(updated_service)
     })
-
 };
 
 

@@ -29,22 +29,21 @@ module.exports = function(app){
 
 
 	// Users
-	app.get('/api/provider/users/:customer_id', require('./controllers/user_read'));				// Get customer by ID
 	app.get('/api/widget/users/', require('./controllers/provider_for_widget_read'));				// Get provider by ID
 	app.delete('/api/users/', require('./controllers/user_delete'));								// Delete user
-	app.patch('/api/users/provider/', require('./controllers/user_provider_update'));				// Update provider
+
+	app.get('/api/provider/users/:customer_id', require('./controllers/user_read'));				// Get customer by ID
+	app.patch('/api/provider/', require('./controllers/provider_update'));							// Update provider
 
 
 
 
 	// Services
 	app.get('/api/provider/services/', passport.authenticate('jwt', {session: false}), require('./controllers/services_read'));								// Get all services of provider
-	app.get('/api/provider/services/:service_id', require('./controllers/service_read'));					// Get service by ID
+	app.get('/api/provider/services/:service_id', passport.authenticate('jwt', {session: false}), require('./controllers/service_read'));					// Get service by ID
 	app.post('/api/provider/services/', passport.authenticate('jwt', {session: false}), require('./controllers/service_create'));							// Create new service
-	app.patch('/api/provider/services/:service_id', require('./controllers/service_update'));				// Update service
+	app.patch('/api/provider/services/:service_id', passport.authenticate('jwt', {session: false}), require('./controllers/service_update'));				// Update service
 
-
-	app.get('/api/provider/services/', require('./controllers/services_for_dashboard_read'));				// Get services of provider (all/archived/active)
 	app.get('/api/widget/services/:provider_id', require('./controllers/services_for_widget_read'));		// Get services of provider for widget (active)
 
 
