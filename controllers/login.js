@@ -22,5 +22,6 @@ module.exports = function(req, res, next) {
 			const token = jwt.sign(user.toJSON(), process.env.JWT_SECRET);
 			return res.status(200).json({user, token});
 		});
+
 	})(req, res, next)
 };

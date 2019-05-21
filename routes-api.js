@@ -10,22 +10,22 @@ module.exports = function(app){
 	app.post('/api/login', require('./controllers/login'));									// Login - both user types
 	app.get('/api/logout', require('./controllers/logout'));								// Logout - both user types
 
-	// Google login
-	app.get('/google/redirect', passport.authenticate('google'), function(req, res, next) {
-		if (req.user) {
-			res.redirect('/')
-		} else {
-			res.redirect('/login')
-		}
-	});
-
-	// Google authentication
-	app.get('/api/google', passport.authenticate('google', {
-		scope: [
-			'https://www.googleapis.com/auth/userinfo.profile',
-			'https://www.googleapis.com/auth/userinfo.email'
-		]
-	}));
+	// // Google login
+	// app.get('/google/redirect', passport.authenticate('google'), function(req, res, next) {
+	// 	if (req.user) {
+	// 		res.redirect('/')
+	// 	} else {
+	// 		res.redirect('/login')
+	// 	}
+	// });
+	//
+	// // Google authentication
+	// app.get('/api/google', passport.authenticate('google', {
+	// 	scope: [
+	// 		'https://www.googleapis.com/auth/userinfo.profile',
+	// 		'https://www.googleapis.com/auth/userinfo.email'
+	// 	]
+	// }));
 
 
 	// Users
@@ -38,9 +38,9 @@ module.exports = function(app){
 
 
 	// Services
-	app.get('/api/provider/services/', require('./controllers/services_read'));								// Get all services of provider
+	app.get('/api/provider/services/', passport.authenticate('jwt', {session: false}), require('./controllers/services_read'));								// Get all services of provider
 	app.get('/api/provider/services/:service_id', require('./controllers/service_read'));					// Get service by ID
-	app.post('/api/provider/services/', require('./controllers/service_create'));							// Create new service
+	app.post('/api/provider/services/', passport.authenticate('jwt', {session: false}), require('./controllers/service_create'));							// Create new service
 	app.patch('/api/provider/services/:service_id', require('./controllers/service_update'));				// Update service
 
 

@@ -6,7 +6,7 @@ module.exports = function(req, res, next) {
         name : req.body.name,
         duration : req.body.duration,
         price : req.body.price,
-        preparation_time : req.body.preparation_time,
+        preparation_time : req.user,
         provider: req.user
     }).then(function(service) {
         // make sure service is unique
