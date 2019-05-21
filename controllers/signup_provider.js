@@ -33,8 +33,7 @@ module.exports = function(req, res, next) {
                 html: '<strong>Dear ' + provider.first_name + ' </b> thank you for signing up with Platboo! Your business has just become bookable!</strong>',
             };
             sgMail.send(msg);
-            // res.status(200).json(provider);
-            res.redirect('/login.html')
+            res.status(200).json(provider);
         }).catch(next)
     }).catch(next)
 };

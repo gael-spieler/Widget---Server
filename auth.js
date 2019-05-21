@@ -3,6 +3,9 @@ const passport_local = require('passport-local').Strategy;
 const passport_google = require('passport-google-oauth20');
 const bcrypt = require('bcrypt');
 const db_user = require('./models/user');
+const passportJWT = require("passport-jwt");
+const JWTStrategy   = passportJWT.Strategy;
+const ExtractJWT = passportJWT.ExtractJwt;
 
 module.exports = function(app) {
 
@@ -43,6 +46,24 @@ module.exports = function(app) {
 			return done(err)
 		})
 	});
+
+
+	passport.use(new JWTStrategy({
+			jwtFromRequest: ExtractJWT.fromAuthHeaderAsBearerToken(),
+			secretOrKey   : process.env.JWT_SECRET
+		},
+		function (jwtPayload, cb) {
+
+			//find the user in db if needed. This functionality may be omitted if you store everything you'll need in JWT payload.
+			return db_user.findOneById(jwtPayload.id)
+				.then(user => {
+					return cb(null, user);
+				})
+				.catch(err => {
+					return cb(err);
+				});
+		}
+	));
 
 	// Google Auth
 	//
