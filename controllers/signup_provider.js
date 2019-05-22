@@ -12,7 +12,6 @@ module.exports = function(req, res, next) {
     req.body.password = bcrypt.hashSync(req.body.password, 10);
 
     // if email is taken, reject, otherwise create the provider
-
     db_provider.findOne({
         email: req.body.email
     }).then(function(provider) {
@@ -24,6 +23,7 @@ module.exports = function(req, res, next) {
         }
         // if email does not exist, create the provider
         db_provider.create(req.body).then(function(provider) {
+            provider.widget_script = `<iframe style="z-index:9000; position:fixed; bottom:3%;right:3%;width:100vw;height:100vh" src="${process.env.WIDGET_URL}/${provider._id}"></iframe>`
             sgMail.setApiKey(process.env.SENDGRID_API_KEY);
             const msg = {
                 to: provider.email,

@@ -76,8 +76,6 @@ db_user.discriminator('provider', new schema({
     },
     widget_script: {
         type: String,
-        required: true,
-        default: '<script scr="http://platboo.com/APIKeytokrnthing"></script>'
     }
     },
     options)
