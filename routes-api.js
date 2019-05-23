@@ -52,6 +52,6 @@ module.exports = function(app){
 	app.patch('/api/providers/services/:service_id', passport.authenticate('jwt', {session: false}), require('./controllers/service_update'));				// Update service
 
 	// Bookings
-	app.get('/api/provider/bookings/:provider_id', require('./controllers/bookings_read'));						// Get all bookings of provider
+	// app.get('/api/provider/bookings/:provider_id', require('./controllers/bookings_read'));						// Get all bookings of provider
 
 };
