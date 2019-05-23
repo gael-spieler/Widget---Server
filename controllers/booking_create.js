@@ -4,7 +4,7 @@ const sgMail = require('@sendgrid/mail');
 
 module.exports = function(req, res, next) {
     let new_booking = req.body;
-        new_booking.customer = req.user;
+        // new_booking.customer = req.user;
     db_booking.create(req.body).then(function(new_booking) {
         db_booking
             .findById(new_booking._id)
@@ -17,7 +17,7 @@ module.exports = function(req, res, next) {
                 select: ['name', 'length', 'price']
             }).then(function(saved_booking) {
 
-                db_user.findById(req.user._id).then(function(user) {
+                db_user.findById(req.body.customer).then(function(user) {
                     sgMail.setApiKey(process.env.SENDGRID_API_KEY);
                     const msg = {
                         to: user.email,

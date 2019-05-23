@@ -38,11 +38,12 @@ module.exports = function(app){
 
 
 	// Services
-	app.post('/api/provider/services/', require('./controllers/service_create'));							// Create new service
+	app.post('/api/provider/services/:id', require('./controllers/service_create'));							// Create new service
 	app.get('/api/provider/services/', require('./controllers/services_for_dashboard_read'));				// Get services of provider (all/archived/active)
 	app.get('/api/widget/services/:provider_id', require('./controllers/services_for_widget_read'));		// Get services of provider for widget (active)
 	app.patch('/api/provider/services/:service_id', require('./controllers/service_archive'));				// Archive or unarchive service
 
 	// Bookings
 	app.post('/api/bookings/', require('./controllers/booking_create'));							// Create appointment
+	app.get('/api/bookings/:provider_id', require('./controllers/bookings_read'));							// Create appointment
 };
