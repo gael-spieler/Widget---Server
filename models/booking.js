@@ -65,7 +65,7 @@ const booking_schema = new schema({
     },
     took_place_feedback_by_customer: { // Customer has to send a feedback that the appointment actually took place
         type: Date
-    },
+    }
     },
     options);
 

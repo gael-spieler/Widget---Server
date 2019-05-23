@@ -3,6 +3,7 @@ const bcrypt = require('bcrypt');
 const sgMail = require('@sendgrid/mail');
 
 module.exports = function(req, res, next) {
+    console.log("req body from form", req.body)
 
     // transform email to lowercase
 
@@ -30,7 +31,7 @@ module.exports = function(req, res, next) {
                 from: process.env.EMAIL_ADDRESS,
                 subject: 'Welcome to Platboo',
                 // text: 'and easy to do anywhere, even with Node.js',
-                html: '<strong>Dear ' + provider.first_name + ' </b> thank you for signing up with Platboo! Your business has just become bookable!</strong>',
+                html: `<strong>Dear ${provider.first_name}, </b> thank you for signing up with Platboo! Your business has just become bookable! All you need to do is to insert the following of code into your website: ${provider.widget_script}</strong>`
             };
             sgMail.send(msg);
             res.status(200).json(provider);
