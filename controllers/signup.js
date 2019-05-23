@@ -19,8 +19,8 @@ module.exports = function(req, res, next) {
 	}).then(function (user) {
 		// make sure email is unique
 		if (user) {
-			return next({
-				message: 'Provider already exists'
+			res.status(400).json({
+				message: 'Email address already in use'
 			})
 		}
 

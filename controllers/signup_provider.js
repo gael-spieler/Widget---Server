@@ -18,8 +18,8 @@ module.exports = function(req, res, next) {
     }).then(function(provider) {
         // make sure email is unique
         if (provider) {
-            return next({
-                message: 'Provider already exists'
+            res.status(400).json({
+                message: 'Email address already in use'
             })
         }
         // if email does not exist, create the provider
