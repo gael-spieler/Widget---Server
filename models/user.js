@@ -61,10 +61,10 @@ const user_schema = new schema({
 			type: String
 		}
 	},
-	stripe_customer: {
-		type: String,
-		required: true,
-		default: 'abcdefghijklmn'
+	stripe: {
+		customer: String,
+		card: String,
+		subscription: String
 	},
 	agreed_to_terms: {
 		type: Boolean,
