@@ -64,7 +64,6 @@ const user_schema = new schema({
 	stripe: {
 		customer: String,
 		card: String,
-		subscription: String
 	},
 	agreed_to_terms: {
 		type: Boolean,

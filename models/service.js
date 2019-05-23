@@ -49,6 +49,9 @@ const service_schema = new schema({
         type: Number,
         required: true
     },
+    stripe: {
+        type: String,
+    },
 },
     options);
 
