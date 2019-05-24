@@ -50,6 +50,11 @@ const booking_schema = new schema({
         required: true,
         default: Date.now()
     },
+    approved:{
+        type: Boolean,
+        required: true,
+        default: true
+    },
     cancelled: {
         type: Boolean,
         required: true,
