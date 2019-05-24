@@ -47,7 +47,7 @@ module.exports = function(req, res, next) {
                         // text: 'and easy to do anywhere, even with Node.js',
                         html: '<strong>Dear ' + saved_booking.provider.first_name + ', ' + user.first_name + ' ' +  user.last_name +' has just booked an appointment with you! Booking details: ' + saved_booking.service.name + ' on ' + saved_booking.start + '.  Best regards, Platboo Team!</strong>',
                     };
-                    
+
                     sgMail.send(msg_to_customer);
                     sgMail.send(msg_to_provider);
                     res.status(201).json(saved_booking)
