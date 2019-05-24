@@ -37,7 +37,7 @@ module.exports = function(req, res, next) {
                         from: process.env.EMAIL_ADDRESS,
                         subject: 'You booked an appointment with ' + saved_booking.provider.company + '!',
                         // text: 'and easy to do anywhere, even with Node.js',
-                        html: '<strong>Dear ' + user.first_name + '<br/> thank you for booking with Platboo!  Booking details: ' + saved_booking.service.name + ' on : ' + saved_booking.start + '. You can cancel your booking free of charge '+ saved_booking.provider.cancellation_time +' hours before your appointment by clicking on the following link: wwww.linklinklink.com/sometokenthingshere.  Happy booking!</strong>',
+                        html: '<strong>Dear ' + user.first_name + ', thank you for booking with Platboo!  You booked ' + saved_booking.service.name + ' with '+ saved_booking.provider.company +' on ' + saved_booking.start + '.  Happy booking!</strong>',
                     };
                     sgMail.send(msg);
                     res.status(201).json(saved_booking)
