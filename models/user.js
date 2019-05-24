@@ -68,6 +68,7 @@ const user_schema = new schema({
 	agreed_to_terms: {
 		type: Boolean,
 		required: true,
+		default: true,
 		validate: [{
 			validator: function(agreement_to_terms){
 				return agreement_to_terms === true;
