@@ -26,12 +26,12 @@ const order_schema = new schema({
         type: ObjectId,
         required: true
     },
-    product: {
-        type: string,
+    sku_id: {
+        type: String,
         required: true
     },
-    stripe_id: {
-        type: string,
+    stripe_order_id: {
+        type: String,
         required: true
     }
     },

@@ -54,4 +54,6 @@ module.exports = function(app){
 	// Bookings
 	app.get('/api/provider/bookings/',passport.authenticate('jwt', {session: false}), require('./controllers/bookings_read'));						// Get all bookings of provider
 
+	// Orders
+	app.post('api/orders', require('./controllers/order_create'));
 };

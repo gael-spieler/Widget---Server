@@ -30,8 +30,8 @@ module.exports = function(req, res, next) {
                 to: provider.email,
                 from: process.env.EMAIL_ADDRESS,
                 subject: 'Welcome to Platboo',
-                // text: 'and easy to do anywhere, even with Node.js',
-                html: `<strong>Dear ${provider.first_name}, </b> thank you for signing up with Platboo! Your business has just become bookable! All you need to do is to insert the following of code into your website: ${provider.widget_script}</strong>`
+                text: `Dear ${provider.first_name}, thank you for signing up with Platboo! Your business has just become bookable! All you need to do is to insert the following code into your website: ${provider.widget_script}`
+                // html: `<strong>Dear ${provider.first_name}, </b> thank you for signing up with Platboo! Your business has just become bookable! All you need to do is to insert the following of code into your website: "${provider.widget_script}"</strong>`
             };
             sgMail.send(msg);
             res.status(200).json(provider);
