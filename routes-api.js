@@ -56,8 +56,5 @@ module.exports = function(app){
 
 	// Orders
 	app.post('api/orders', require('./controllers/order_create'));
-
-	app.get('/', function(req, res, next){
-		res.send('<h1>Hello</h1>')
-	})
+	
 };
